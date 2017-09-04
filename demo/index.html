@@ -1,0 +1,16 @@
+<script src="../dist/index.js"></script>
+<script>
+    window.pageload.init({
+        cacheMap:{
+            name:'userName',
+            user_id:{
+                rename:'userId',
+                storage:'session'
+            }
+        },
+        callKeys:{
+            // '*':'/default/index.html',
+            'id=2':'detail/?id={id}'
+        }
+    });
+</script>

@@ -1,3 +1,14 @@
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.pageload = {})));
+}(this, (function (exports) { 'use strict';
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var src = createCommonjsModule(function (module) {
 /**
  * 输入一个url, 则返回之后所有的key 和对应的value 的一个集合.
  * 他只能够应对 search (?) 后的内容返回
@@ -11,7 +22,7 @@ const getSearch = (url) => {
     });
     Object.keys(resp).forEach(name => resp[name].length === 1 && (resp[name] = resp[name].join('')));
     return resp;
-}
+};
 
 /**
  * 根据传入的 url , callKeys 等计算可以跳转的页面.
@@ -42,7 +53,7 @@ const storageActions = {
 	local(key,value){
 		window.localStorage.setItem(key, decodeURIComponent(value));
 	}
-}
+};
 
 // 页面跳转处理缓存
 const init = (opts={}) => {
@@ -77,10 +88,25 @@ const init = (opts={}) => {
 		onRedirect && onRedirect();
 		return location.href = redirect;
 	}
-}
+};
 
 module.exports = {
 	init,
 	getSearch,
 	getRedirectPath
-}
+};
+});
+
+var src_1 = src.init;
+var src_2 = src.getSearch;
+var src_3 = src.getRedirectPath;
+
+exports['default'] = src;
+exports.init = src_1;
+exports.getSearch = src_2;
+exports.getRedirectPath = src_3;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+//# sourceMappingURL=index.js.map
